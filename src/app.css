@@ -1,0 +1,92 @@
+/* app.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'Clear Sans';
+	src: local('Clear Sans'), url('/fonts/ClearSans-Regular-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Clear Sans';
+	src: local('Clear Sans Bold'), url('/fonts/ClearSans-Bold-webfont.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Clear Sans';
+	src: local('Clear Sans Light'), url('/fonts/ClearSans-Light-webfont.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@layer base {
+	html {
+		@apply h-full;
+	}
+	body {
+		font-display: swap;
+		@apply h-full bg-gray-800 text-white;
+	}
+
+	a {
+		@apply cursor-pointer;
+	}
+	a.link {
+		@apply text-green-400 border-b border-b-green-600;
+	}
+	button {
+		touch-action: manipulation;
+	}
+}
+
+@keyframes shake {
+	0 {
+		transform: translateX(0);
+	}
+	12.5% {
+		transform: translateX(-6px) rotateY(-9deg) skewY(1deg);
+	}
+	37.5% {
+		transform: translateX(5px) rotateY(4.5deg) skewY(-1deg);
+	}
+	62.5% {
+		transform: translateX(-3px) rotateY(-2.25deg) skewY(0);
+	}
+	87.5% {
+		transform: translateX(2px) rotateY(3deg);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@layer components {
+	.shake {
+		animation-duration: 0.5s;
+		animation-timing-function: cubic-bezier(0, 0.23, 1, 0.71);
+		animation-name: shake;
+		transform-orgin: center bottom;
+	}
+
+	.glow-purple {
+		box-shadow: 0 0 10px #cc00ff;
+	}
+
+	.glow-blue {
+		box-shadow: 0 0 10px #00ccff;
+	}
+
+	.text-glow-purple {
+		text-shadow: 0 0 3px #cc00ff;
+	}
+
+	.text-glow-purple-xl {
+		text-shadow: 0 0 12px #cc00ff;
+	}
+}
