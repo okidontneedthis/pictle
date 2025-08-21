@@ -1,18 +1,25 @@
 import adapter from '@sveltejs/adapter-static';
 import preprocess from 'svelte-preprocess';
 
-/** @type {import('@sveltejs/kit').Config} */
+const dev = process.argv.includes('dev');
+
 const config = {
-	// Consult https://github.com/sveltejs/svelte-preprocess
-	// for more information about preprocessors
-	preprocess: preprocess(),
+  preprocess: preprocess(),
 
-	kit: {
-		adapter: adapter(),
+  kit: {
+    // 👇 Use adapter-static and specify a fallback
+    adapter: adapter({
+      fallback: 'index.html'
+    }),
 
-		// hydrate the <div id="svelte"> element in src/app.html
-		target: '#svelte'
-	}
+    // 👇 Important for GitHub Pages
+    paths: {
+      base: dev ? '' : '/pictle'
+    },
+
+    // 👇 The prerender property is no longer needed with the static adapter
+    // It's recommended to remove it
+  }
 };
 
 export default config;
