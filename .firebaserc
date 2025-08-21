@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "staging": "staging-pictle",
+    "prod": "pictle",
+    "default": "pictle"
+  }
+}
