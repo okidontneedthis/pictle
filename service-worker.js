@@ -1,19 +1,19 @@
-const timestamp = 1756552138405;
+const timestamp = 1757998303013;
 const build = [
-  "/pictle/_app/start-b0a8d786.js",
-  "/pictle/_app/layout.svelte-3ca0e7cf.js",
-  "/pictle/_app/error.svelte-3471433e.js",
-  "/pictle/_app/pages/index.svelte-06066102.js",
-  "/pictle/_app/pages/gallery.svelte-a3b1fc72.js",
-  "/pictle/_app/pages/draw.svelte-15221934.js",
-  "/pictle/_app/chunks/vendor-9be25129.js",
+  "/pictle/_app/start-3fa9905f.js",
+  "/pictle/_app/layout.svelte-dcdbb6c1.js",
+  "/pictle/_app/error.svelte-8f6d3db0.js",
+  "/pictle/_app/pages/index.svelte-5f65de0f.js",
+  "/pictle/_app/pages/gallery.svelte-8aca8b57.js",
+  "/pictle/_app/pages/draw.svelte-0530727b.js",
+  "/pictle/_app/chunks/vendor-7150df49.js",
   "/pictle/_app/chunks/preload-helper-1bc7907a.js",
-  "/pictle/_app/chunks/times-f1d7f2bd.js",
-  "/pictle/_app/chunks/app-6ffbfc37.js",
+  "/pictle/_app/chunks/times-a7312e0b.js",
+  "/pictle/_app/chunks/app-532cf050.js",
   "/pictle/_app/assets/app-fd91bb74.css",
-  "/pictle/_app/chunks/db-a3e37f2e.js",
-  "/pictle/_app/chunks/fireboot-d479453d.js",
-  "/pictle/_app/chunks/index.esm-ebb5526c.js"
+  "/pictle/_app/chunks/db-ab515421.js",
+  "/pictle/_app/chunks/fireboot-0bd2e702.js",
+  "/pictle/_app/chunks/index.esm-59a28136.js"
 ];
 const files = [
   "/pictle/favicon.ico",
@@ -3267,12 +3267,6 @@ class PerformanceController {
   }
 }
 const DEFAULT_ENTRY_NAME = "[DEFAULT]";
-function getPerformance(app2 = getApp()) {
-  app2 = getModularInstance(app2);
-  const provider = _getProvider(app2, "performance");
-  const perfInstance = provider.getImmediate();
-  return perfInstance;
-}
 const factory$1 = (container, { options: settings }) => {
   const app2 = container.getProvider("app").getImmediate();
   const installations = container.getProvider("installations-internal").getImmediate();
@@ -3805,27 +3799,6 @@ async function logEvent$1(gtagFunction, initializationPromise2, eventName, event
     gtagFunction("event", eventName, params);
   }
 }
-function getAnalytics(app2 = getApp()) {
-  app2 = getModularInstance(app2);
-  const analyticsProvider = _getProvider(app2, ANALYTICS_TYPE);
-  if (analyticsProvider.isInitialized()) {
-    return analyticsProvider.getImmediate();
-  }
-  return initializeAnalytics(app2);
-}
-function initializeAnalytics(app2, options = {}) {
-  const analyticsProvider = _getProvider(app2, ANALYTICS_TYPE);
-  if (analyticsProvider.isInitialized()) {
-    const existingInstance = analyticsProvider.getImmediate();
-    if (deepEqual(options, analyticsProvider.getOptions())) {
-      return existingInstance;
-    } else {
-      throw ERROR_FACTORY$1.create("already-initialized");
-    }
-  }
-  const analyticsInstance = analyticsProvider.initialize({ options });
-  return analyticsInstance;
-}
 function logEvent(analyticsInstance, eventName, eventParams, options) {
   analyticsInstance = getModularInstance(analyticsInstance);
   logEvent$1(wrappedGtagFunction, initializationPromisesMap[analyticsInstance.app.options.appId], eventName, eventParams, options).catch((e) => logger.error(e));
@@ -3856,20 +3829,14 @@ function registerAnalytics() {
 }
 registerAnalytics();
 const app = initializeApp({
-  apiKey: "AIzaSyCFnoz4_jsO-StDt9vie-SWo0ZSAffUsC8",
-  authDomain: "pictle.firebaseapp.com",
-  projectId: "pictle",
-  storageBucket: "pictle.appspot.com",
-  messagingSenderId: "183261919274",
-  appId: "1:183261919274:web:1c5e3c4ea6c6226eaeeb53",
-  measurementId: "G-ZEPK6EFR57"
+  apiKey: "AIzaSyAo8U1VjWsgYNuAZGCEmm6yboOzWTdMpDY",
+  authDomain: "pictle-for-rach.firebaseapp.com",
+  databaseURL: "https://pictle-for-rach-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "pictle-for-rach",
+  storageBucket: "pictle-for-rach.firebasestorage.app",
+  messagingSenderId: "20032408814",
+  appId: "1:20032408814:web:5dfaf9e8a3a2454004b7ff"
 });
-try {
-  getPerformance(app);
-  getAnalytics(app);
-} catch (e) {
-  console.log("Unable to load Firebase Analytics/Performance. Probably not in browser.");
-}
 /**
  * @license
  * Copyright 2019 Google LLC
@@ -4900,7 +4867,7 @@ worker.addEventListener("fetch", (event) => {
   const isHttp = url.protocol.startsWith("http");
   const isDevServerRequest = url.hostname === self.location.hostname && url.port !== self.location.port;
   const isStaticAsset = url.host === self.location.host && staticAssets.has(url.pathname);
-  const isPuzzle = url.host === "pictle-default-rtdb.firebaseio.com" && url.pathname.startsWith("/puzzles/");
+  const isPuzzle = url.host === "pictle-for-rach-default-rtdb.asia-southeast1.firebasedatabase.app" && url.pathname.startsWith("/puzzles/");
   const skipBecauseUncached = event.request.cache === "only-if-cached" && !isStaticAsset;
   if (isHttp && !isDevServerRequest && !skipBecauseUncached) {
     event.respondWith((async () => {
